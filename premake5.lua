@@ -1,9 +1,9 @@
 project "GLFW"
     kind "StaticLib"
     language "C"
-    
-    targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-    objdir ("inter/" .. outputdir .. "/%{prj.name}")
+
+    targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
+    objdir ("%{wks.location}/inter/" .. outputdir .. "/%{prj.name}")
 
     files
     {
@@ -17,11 +17,11 @@ project "GLFW"
         "src/vulkan.c",
         "src/window.c"
     }
-    
+
     filter "system:windows"
         systemversion "latest"
         staticruntime "On"
-        
+
         files
         {
             "src/win32_init.c",
@@ -35,8 +35,8 @@ project "GLFW"
             "src/osmesa_context.c"
         }
 
-        defines 
-        { 
+        defines
+        {
             "_GLFW_WIN32",
             "_CRT_SECURE_NO_WARNINGS"
         }
